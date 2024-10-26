@@ -144,17 +144,10 @@ const verifySession = async (req) => {
 
 const logout = async (req) => {
   // Elimina las cookies del cliente
-  req.res.clearCookie("accessToken", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "None"
-  });
 
-  req.res.clearCookie("refreshToken", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "None"
-  });
+  req.res.clearCookie("accessToken");
+
+  req.res.clearCookie("refreshToken");
   return { session: false };
 };
 
