@@ -12,16 +12,16 @@ const loginController = async (req, res, next) => {
     const accessTokenOptions = {
       httpOnly: false,
       secure: true,
-      sameSite: 'None',
-      domain: 'https://galaxipapas.vercel.app',
+      sameSite: 'true',
+      domain: 'galaxipapas.vercel.app',
       maxAge: 7 * 24 * 60 * 60 * 1000, // Si "recordarme" es true, 7 días, si no, cookie de sesión
     };
 
     const refreshTokenOptions = {
-      httpOnly: false,
+      httpOnly: true,
       secure: true,
       sameSite: 'None',
-      domain: 'https://galaxipapas.vercel.app',
+      domain: 'galaxipapas.vercel.app',
       maxAge:  7 * 24 * 60 * 60 * 1000, // Si "recordarme" es true, 7 días, si no, cookie de sesión
     };
 
@@ -71,7 +71,7 @@ const refreshToken = async (req, res, next) => {
   try {
     const result = await serviceAtuh.verifySession(req);
     res.cookie("accessToken", result.token, {
-      httpOnly: false,
+      httpOnly: true,
       secure: true,
       sameSite: 'None',
       domain: 'galaxipapas.vercel.app',
