@@ -12,7 +12,7 @@ const loginController = async (req, res, next) => {
     const accessTokenOptions = {
       httpOnly: false,
       secure: true,
-      sameSite: 'true',
+      sameSite: 'None',
       domain: 'galaxipapas.vercel.app',
       maxAge: 7 * 24 * 60 * 60 * 1000, // Si "recordarme" es true, 7 días, si no, cookie de sesión
     };
