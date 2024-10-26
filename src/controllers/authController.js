@@ -11,7 +11,7 @@ const loginController = async (req, res, next) => {
     const refreshToken = auth.assignRefreshToken({ user: result.userInfo });
     const accessTokenOptions = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Solo HTTPS en producción
+      secure: true, // Solo HTTPS en producción
       sameSite: "None",
       path: '/',
       maxAge: 7 * 24 * 60 * 60 * 1000, // Si "recordarme" es true, 7 días, si no, cookie de sesión
@@ -19,7 +19,7 @@ const loginController = async (req, res, next) => {
 
     const refreshTokenOptions = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Solo HTTPS en producción
+      secure: true, // Solo HTTPS en producción
       sameSite: "None",
       path: '/',
       maxAge:  7 * 24 * 60 * 60 * 1000, // Si "recordarme" es true, 7 días, si no, cookie de sesión
