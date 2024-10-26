@@ -110,17 +110,17 @@ const logout = async (req, res, next) => {
   try {
     const result = await serviceAtuh.logout(req);
 
-    // Eliminar la cookie de 'accessToken'
     res.clearCookie('accessToken', {
       httpOnly: true,
       secure: true,
+      path: '/',
       sameSite: 'None',
     });
 
-    // Eliminar la cookie de 'refreshToken'
     res.clearCookie('refreshToken', {
       httpOnly: true,
       secure: true,
+      path: '/',
       sameSite: 'None',
 
     });

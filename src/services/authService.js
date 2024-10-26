@@ -147,14 +147,16 @@ const logout = async (req) => {
   
   req.res.clearCookie("accessToken", {
     httpOnly: true,
-    secure: true,
-    sameSite: "None"
+      secure: true,
+      path: '/',
+      sameSite: 'None',
   });
 
   req.res.clearCookie("refreshToken", {
     httpOnly: true,
     secure: true,
-    sameSite: "None"
+    path: '/',
+    sameSite: 'None',
   });
   return { session: false };
 };
