@@ -115,8 +115,6 @@ const logout = async (req, res, next) => {
       httpOnly: true,
       secure: true,
       sameSite: 'None',
-      path: '/',       // Asegúrate de que el 'path' coincida con el que se usó para establecer la cookie
-      domain: '.tudominio.com'  // Ajusta el dominio si es necesario
     });
 
     // Eliminar la cookie de 'refreshToken'
@@ -124,8 +122,7 @@ const logout = async (req, res, next) => {
       httpOnly: true,
       secure: true,
       sameSite: 'None',
-      path: '/',       // Igual que arriba
-      domain: '.tudominio.com'  // Ajusta según tu configuración
+
     });
 
     success(req, res, result, 200);
