@@ -15,7 +15,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: 'https://galaxipapas.vercel.app', 
-  
   credentials: true, // Permitir el envío de cookies o credenciales
 }));
 
