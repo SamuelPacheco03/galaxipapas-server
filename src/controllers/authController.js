@@ -109,17 +109,25 @@ const verifySession = async (req, res, next) => {
 const logout = async (req, res, next) => {
   try {
     const result = await serviceAtuh.logout(req);
-    req.res.clearCookie("accessToken", {
+
+    // Eliminar la cookie de 'accessToken'
+    res.clearCookie('accessToken', {
       httpOnly: true,
       secure: true,
-      sameSite: "None"
+      sameSite: 'None',
+      path: '/',       // Asegúrate de que el 'path' coincida con el que se usó para establecer la cookie
+      domain: '.tudominio.com'  // Ajusta el dominio si es necesario
     });
-  
-    req.res.clearCookie("refreshToken", {
+
+    // Eliminar la cookie de 'refreshToken'
+    res.clearCookie('refreshToken', {
       httpOnly: true,
       secure: true,
-      sameSite: "None"
+      sameSite: 'None',
+      path: '/',       // Igual que arriba
+      domain: '.tudominio.com'  // Ajusta según tu configuración
     });
+
     success(req, res, result, 200);
   } catch (error) {
     next(error);
