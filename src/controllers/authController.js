@@ -75,7 +75,6 @@ const refreshToken = async (req, res, next) => {
       httpOnly: true,
       secure: true,
       sameSite: 'None',
-      domain: 'galaxipapas.vercel.app',
       maxAge: 15 * 60 * 1000, // Token de acceso dura 15 minutos
     });
   
@@ -110,6 +109,17 @@ const verifySession = async (req, res, next) => {
 const logout = async (req, res, next) => {
   try {
     const result = await serviceAtuh.logout(req);
+    req.res.clearCookie("accessToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None"
+    });
+  
+    req.res.clearCookie("refreshToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None"
+    });
     success(req, res, result, 200);
   } catch (error) {
     next(error);
