@@ -146,16 +146,14 @@ const logout = async (req) => {
   // Elimina las cookies del cliente
   req.res.clearCookie("accessToken", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "Lax",
-    path: "/",
+    secure: true,
+    sameSite: "None"
   });
 
   req.res.clearCookie("refreshToken", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "Lax",
-    path: "/",
+    secure: true,
+    sameSite: "None"
   });
   return { session: false };
 };
