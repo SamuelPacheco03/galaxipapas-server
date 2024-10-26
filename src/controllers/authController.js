@@ -11,16 +11,17 @@ const loginController = async (req, res, next) => {
     const refreshToken = auth.assignRefreshToken({ user: result.userInfo });
     const accessTokenOptions = {
       httpOnly: true,
-      secure: true, // Solo HTTPS en producción
+      secure: true,
       sameSite: "lax",
+      domain: 'galaxipapas.vercel.app',
       maxAge: 7 * 24 * 60 * 60 * 1000, // Si "recordarme" es true, 7 días, si no, cookie de sesión
     };
 
     const refreshTokenOptions = {
       httpOnly: true,
-      secure: true, // Solo HTTPS en producción
+      secure: true,
       sameSite: "lax",
-      
+      domain: 'galaxipapas.vercel.app',
       maxAge:  7 * 24 * 60 * 60 * 1000, // Si "recordarme" es true, 7 días, si no, cookie de sesión
     };
 
