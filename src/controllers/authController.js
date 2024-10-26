@@ -27,7 +27,7 @@ const loginController = async (req, res, next) => {
 
     // Establecer cookies seguras con el token de acceso
     res.cookie("accessToken", result.token, accessTokenOptions);
-
+    console.log(res.cookie)
     // Establecer cookies seguras con el refresh token
     res.cookie("refreshToken", refreshToken, refreshTokenOptions);
     // Enviar respuesta de éxito
