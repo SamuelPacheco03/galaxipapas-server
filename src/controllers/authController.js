@@ -109,17 +109,9 @@ const verifySession = async (req, res, next) => {
 const logout = async (req, res, next) => {
   try {
     const result = await serviceAtuh.logout(req);
-    req.res.clearCookie("accessToken", {
-      httpOnly: true,
-      secure: true,
-      sameSite: "None"
-    });
+    req.res.clearCookie("accessToken");
   
-    req.res.clearCookie("refreshToken", {
-      httpOnly: true,
-      secure: true,
-      sameSite: "None"
-    });
+    req.res.clearCookie("refreshToken");
     success(req, res, result, 200);
   } catch (error) {
     next(error);
