@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-  origin: 'https://galaxipapas.vercel.app/', 
+  origin: 'https://galaxipapas.vercel.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Permitir métodos HTTP
   credentials: true, // Permitir el envío de cookies o credenciales
 }));
